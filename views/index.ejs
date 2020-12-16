@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/libraries/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-3">
+        <% if(error && error.length > 0 ){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% }else if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+
+    </div>
+    <div class="container">
+        <h1>
+            URL Shortener
+        </h1>
+        <form action="/shorten" method="post" class="my-4 form-inline">
+            <label for="url" class="sr-only">Full URL:</label>
+            <input type="url" name="url" id="rrl" placeholder="Url" required class="form-contol col mr-2 py-2">
+            <button type="submit" class="btn btn-success py-2">Shorten</button>
+        </form>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Number of clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% shortUrl.forEach(url => { %>
+                    <tr>
+                        <td>
+                            <a href=<%= url.fullUrl %> target="blank"><%= url.fullUrl %></a>
+                        </td>
+                        <td>
+                            <a href= <%= url.shortUrl %> target="blank"><%= url.shortUrl %></a>
+                        </td>
+                        <td>
+                            <%= url.clicks %>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
