@@ -1,0 +1,16 @@
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  text-align: center;
+  background: #dfdfdf;
+}
+.container.main{
+  
+  margin: 20px auto;
+}

@@ -6,7 +6,6 @@ const router = express.Router();
 // index route
 router.get('/', async (req, res) => {
     const result = await shortUrl.find({});
-    console.log(result)
     res.render('index', {shortUrl: result})
 });
 
